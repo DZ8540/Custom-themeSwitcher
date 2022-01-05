@@ -1,0 +1,22 @@
+{
+  "name": "@dz8540/custom-themeswitcher",
+  "version": "1.0.0",
+  "description": "DZ's dynamic theme (scheme) switcher component.",
+  "main": "/Dist/JS/CustomThemeSwitcher.min.js",
+  "types": "customThemeSwitcher.d.ts",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DZ8540/Custom-themeSwitcher.git"
+  },
+  "author": "DZ",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DZ8540/Custom-themeSwitcher/issues"
+  },
+  "homepage": "https://github.com/DZ8540/Custom-themeSwitcher#readme",
+  "devDependencies": {
+    "sass": "^1.45.2",
+    "typescript": "^4.5.4"
+  }
+}
