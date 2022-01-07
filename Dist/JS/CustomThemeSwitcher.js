@@ -89,3 +89,4 @@ class ThemeSwitcher {
     }
 }
 exports.ThemeSwitcher = ThemeSwitcher;
+exports.default = ThemeSwitcher;

@@ -1,4 +1,4 @@
-type Scheme = 'light' | 'dark' | 'system';
+export type Scheme = 'light' | 'dark' | 'system';
 
 interface IParams {
   linkId: string,
@@ -131,3 +131,5 @@ export class ThemeSwitcher {
     console.info(`Component "${this.name}" is ready.`);
   }
 }
+
+export default ThemeSwitcher;

@@ -1,1 +1,1 @@
-export { ThemeSwitcher } from './Dist/TS/CustomThemeSwitcher';
+export { ThemeSwitcher, Scheme } from './Dist/TS/CustomThemeSwitcher';

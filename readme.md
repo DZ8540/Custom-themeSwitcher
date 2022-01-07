@@ -8,6 +8,7 @@ npm i @dz8540/custom-themeswitcher
 ```
 2. Manually - all you need is in the "Dist" folder.
 ```html
+<link rel="stylesheet" href="/Your-path/CustomThemeSwitcher.min.css">
 <script src="/Your-path/CustomThemeSwitcher.min.js"></script>
 ```
 
