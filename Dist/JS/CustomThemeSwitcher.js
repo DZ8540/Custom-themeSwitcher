@@ -13,6 +13,7 @@ class ThemeSwitcher {
         this.schemeKey = params.schemeKey;
         this.defaultScheme = params.defaultScheme;
         this.name = el.dataset.name || '';
+        this.matchMedia = window.matchMedia('(prefers-color-scheme: light)');
         this.init();
     }
     init() {
@@ -40,6 +41,7 @@ class ThemeSwitcher {
     }
     listen() {
         window.addEventListener('storage', () => {
+            this.removeSystemSchemeListener();
             let currentScheme = this.getScheme();
             for (let item of this.elements) {
                 item.classList.remove(this.elementActiveClass);
@@ -59,11 +61,13 @@ class ThemeSwitcher {
         });
     }
     systemSchemeListener() {
-        let matchMedia = window.matchMedia('(prefers-color-scheme: light)');
-        matchMedia.matches ? this.setLink(this.lightSchemeRoute) : this.setLink(this.darkSchemeRoute);
-        matchMedia.addListener((e) => {
+        this.matchMedia.matches ? this.setLink(this.lightSchemeRoute) : this.setLink(this.darkSchemeRoute);
+        this.matchMedia.onchange = (e) => {
             e.matches ? this.setLink(this.lightSchemeRoute) : this.setLink(this.darkSchemeRoute);
-        });
+        };
+    }
+    removeSystemSchemeListener() {
+        this.matchMedia.onchange = null;
     }
     setLink(route) {
         this.linkEl.setAttribute('href', route);

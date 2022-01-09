@@ -22,6 +22,7 @@ export class ThemeSwitcher {
   protected elements: HTMLDivElement[];
   protected lightSchemeRoute: string;
   protected darkSchemeRoute: string;
+  protected matchMedia: MediaQueryList;
 
   constructor(el: HTMLDivElement | null, params: IParams) {
     this.el = el;
@@ -32,6 +33,7 @@ export class ThemeSwitcher {
     this.schemeKey = params.schemeKey;
     this.defaultScheme = params.defaultScheme;
     this.name = el!.dataset.name || '';
+    this.matchMedia = window.matchMedia('(prefers-color-scheme: light)');
 
     this.init();
   }
@@ -66,6 +68,7 @@ export class ThemeSwitcher {
 
   protected listen(): void {
     window.addEventListener('storage', () => {
+      this.removeSystemSchemeListener();
       let currentScheme: Scheme = this.getScheme();
 
       for (let item of this.elements) {
@@ -92,12 +95,15 @@ export class ThemeSwitcher {
   }
 
   protected systemSchemeListener(): void {
-    let matchMedia = window.matchMedia('(prefers-color-scheme: light)');
-    matchMedia.matches ? this.setLink(this.lightSchemeRoute) : this.setLink(this.darkSchemeRoute);
+    this.matchMedia.matches ? this.setLink(this.lightSchemeRoute) : this.setLink(this.darkSchemeRoute);
 
-    matchMedia.addListener((e: MediaQueryListEvent): void => {
+    this.matchMedia.onchange = (e: MediaQueryListEvent): void => {
       e.matches ? this.setLink(this.lightSchemeRoute) : this.setLink(this.darkSchemeRoute);
-    });
+    };
+  }
+
+  protected removeSystemSchemeListener(): void {
+    this.matchMedia.onchange = null;
   }
 
   protected setLink(route: string): void {

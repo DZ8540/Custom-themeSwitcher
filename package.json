@@ -1,6 +1,6 @@
 {
   "name": "@dz8540/custom-themeswitcher",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "DZ's dynamic theme (scheme) switcher component.",
   "main": "/Dist/JS/CustomThemeSwitcher.min.js",
   "types": "customThemeSwitcher.d.ts",
